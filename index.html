@@ -44,8 +44,14 @@
         url: full_url,
         method: 'GET',
     }).done(function (result) {
-
-       $("#display_results").html("<h6>" + JSON.stringify(result.response.docs) + "</h6>");
+        var data_div = [];
+        for (var i in result.response.docs){
+            data_div.push("<h4>" + result.response.docs[i].snippet + "</h4>");
+            data_div.push("<h5><a href='" + result.response.docs[i].web_url + "'>" + result.response.docs[i].web_url + "</h5></a>");
+            data_div.push("<h6>Source: " + result.response.docs[i].source + "</h6>");
+            data_div.push("<h6>" + result.response.docs[i].pub_date + "</h6><br>");
+        };
+       $("#display_results").html(data_div.join(''));
     });
     });
 </script>
