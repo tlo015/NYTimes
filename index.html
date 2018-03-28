@@ -9,17 +9,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <body>
     <center>
+        <!-- Front End 1: Add Bootstrap to header Jumbotron -->
+        <!--  Front End 2: Add color / icon to header (optional):-->
+
         <br><br><h1>NYT Search</h1>
+
         <div class="card" style="width: 32rem;"><div class="card-body"><div align="left">
+        <!-- Begin search term input fields -->
         <br><h6>Search Term: </h6><input type="text" id="search_box" value=""><br><br>
         <h6>Start Year (Optional, in YYYYMMDD): </h6><input type="text" id="startdate_box" value=""><br><br>
         <h6>End Year (Optional, in YYYYMMDD): </h6><input type="text" id="enddate_box" value=""><br><br>
+       <!-- Begin buttons -->
         <button id="submit" type="button" class="btn btn-primary">Submit</button><br><br>
+        <button id="clear_results" type="button" class="btn btn-primary">Submit</button><br><br>
+            <!-- CO: Front End 3: Added button to clear resuts -->
+
         </div></div></div><br>
+        <!-- Target div for results -->
         <div id="display_results"></div>
+    
         </div></div>
     </center>      
 </body>
+<!-- Begin scripts -->
 <script>
     $("#submit").on("click", function () {
     var url = [];
