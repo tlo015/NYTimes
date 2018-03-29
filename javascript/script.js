@@ -37,6 +37,14 @@
             $("#display_results").html(data_div.join(''));
         });
     });
-    $("#clear_results").on("click",function(){
+
+    $("#clear_results").on("click", function () {
+        $("#search_box").val('');
+        $("#numberofResults_box").val('');
+        $("#startdate_box").val('');
+        $("#endtdate_box").val('');
+        $("#enddate_box").val('');
         $("#display_results").empty();
-    })
+
+    });
+
