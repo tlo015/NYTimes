@@ -14,108 +14,61 @@
 
     <center>
 
-        <br>
-        <br>
-        <h1>NYT Search</h1>
-        <div class="card" style="width: 32rem;">
-            <div class="card-body">
-                <div align="left">
-                    <br>
-                    <h6>Search Term: </h6>
-                    <input type="text" id="search_box" value="">
-                    <br>
-                    <br>
-                    <h6>Number of Results to Display (10 max): </h6>
-                    <input type="text" id="numberofResults_box" value="">
-                    <br>
-                    <br>
-                    <h6>Start Year (Optional, in YYYYMMDD): </h6>
-                    <input type="text" id="startdate_box" value="">
-                    <br>
-                    <br>
-                    <h6>End Year (Optional, in YYYYMMDD): </h6>
-                    <input type="text" id="enddate_box" value="">
-                    <br>
-                    <br>
-                    <button id="submit" type="button" class="btn btn-primary">Submit</button>
-                    <br>
-                    <br>
-                </div>
+    <!-- Front End 1: Add Bootstrap to header Jumbotron -->
+    <!--  Front End 2: Add color / icon to header (optional):-->
+    <div class="jumbotron">
+        <h1 class="display-4">NYT Search</h1>
+        <p class="lead">Powered by The New Your Times</p>
+        <p>Coding Bootcamp UCLA</p>
+    </div>
+
+    <br>
+    <br>
+    <h1></h1>
+    <div class="card" style="width: 32rem;">
+        <div class="card-body">
+            <div align="left">
+                <!-- Begin search term input fields -->
+                <br>
+                <h6>Search Term: </h6>
+                <input type="text" id="search_box" value="">
+                <br>
+                <br>
+                <h6>Number of Results to Display (10 max): </h6>
+                <input type="text" id="numberofResults_box" value="">
+                <br>
+                <br>
+                <h6>Start Year (Optional, in YYYYMMDD): </h6>
+                <input type="text" id="startdate_box" value="">
+                <br>
+                <br>
+                <h6>End Year (Optional, in YYYYMMDD): </h6>
+                <input type="text" id="enddate_box" value="">
+                <br>
+                <br>
+                <!-- Begin buttons -->
+                <button id="submit" type="button" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+                <button id="clear_results" type="button" class="btn btn-primary">Clear Results</button>
+                <br>
+                <br>
+                <!-- CO: Front End 3: Added button to clear resuts -->
+
             </div>
         </div>
-        <br>
-        <div id="display_results"></div>
-        </div>
-        </div>
+    </div>
+    <br>
+    <!-- Target div for results -->
+    <div id="display_results"></div>
+
+    </div>
+    </div>
     </center>
-
-        <!-- Front End 1: Add Bootstrap to header Jumbotron -->
-        <!--  Front End 2: Add color / icon to header (optional):-->
-        <div class="jumbotron">
-                <h1 class="display-4">NYT Search</h1>
-                <p class="lead">Powered by The New Your Times</p>
-                <p>Coding Bootcamp UCLA</p>
-              </div>
-
-        <br><br><h1></h1>
-
-        <div class="card" style="width: 32rem;"><div class="card-body"><div align="left">
-        <!-- Begin search term input fields -->
-        <br><h6>Search Term: </h6><input type="text" id="search_box" value=""><br><br>
-        <h6>Start Year (Optional, in YYYYMMDD): </h6><input type="text" id="startdate_box" value=""><br><br>
-        <h6>End Year (Optional, in YYYYMMDD): </h6><input type="text" id="enddate_box" value=""><br><br>
-       <!-- Begin buttons -->
-        <button id="submit" type="button" class="btn btn-primary">Submit</button><br><br>
-        <button id="clear_results" type="button" class="btn btn-primary">Clear Results</button><br><br>
-            <!-- CO: Front End 3: Added button to clear resuts -->
-
-        </div></div></div><br>
-        <!-- Target div for results -->
-        <div id="display_results"></div>
-    
-        </div></div>
-    </center>      
 </body>
-<!-- Begin scripts -->
-<script>
-    $("#submit").on("click", function () {
-        var url = [];
-        url.push("https://api.nytimes.com/svc/search/v2/articlesearch.json?apikey=c2117551737444c0993461e828428e15");
-        var search = ($("#search_box").val()).toLowerCase().replace(" ", "+");
-        var startdate = ($("#startdate_box").val()).toLowerCase().replace(" ", "+");
-        var enddate = ($("#enddate_box").val()).toLowerCase().replace(" ", "+");
-        //gave input field the id of "numberofResults_box"
-        var resultNum= parseInt($("#numberofResults_box").val(),10);
-        if(resultNum>10){
-            resultNum=10;
-        }
-        if (startdate) {
-            url.push(("&start_date=" + startdate));
-        }
-        if (enddate) {
-            url.push(("&end_date=" + enddate));
-        }
-        if (search) {
-            url.push(("&q=" + search));
-        };
-        
-        full_url = url.join('')
-        console.log(full_url);
-        console.log(resultNum);
-        $.ajax({
-            url: full_url,
-            method: 'GET',
-        }).done(function (result) {
-            var data_div = [];
-            for (let i=0;i<resultNum;i++) {
-                data_div.push("<h4>" + result.response.docs[i].snippet + "</h4>");
-                data_div.push("<h5><a href='" + result.response.docs[i].web_url + "'>" + result.response.docs[i].web_url + "</h5></a>");
-                data_div.push("<h6>Source: " + result.response.docs[i].source + "</h6>");
-                data_div.push("<h6>" + result.response.docs[i].pub_date + "</h6><br>");
-            };
-            $("#display_results").html(data_div.join(''));
-        });
-    });
+<!- Begin scripts -->
+<script type="text/javascript" src="javascript/script.js">
+
 </script>
 
 </html>
