@@ -44,6 +44,7 @@
         $("#startdate_box").val('');
         $("#endtdate_box").val('');
         $("#enddate_box").val('');
-        $("#display_results").html('<h6></h6>');
+        $("#display_results").empty();
 
     });
+
