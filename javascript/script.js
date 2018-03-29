@@ -37,3 +37,6 @@
             $("#display_results").html(data_div.join(''));
         });
     });
+    $("#clear_results").on("click",function(){
+        $("#display_results").empty();
+    })
